@@ -37,8 +37,8 @@
         <label for="inputNanme4" class="form-label">Level</label>
         <select class="form-control" name="level">
           <option value="">Choose..</option>
-          <option value="Diploma" {{ $student->module === 'Diploma' ? 'selected' : '' }}>Diploma</option>
-          <option value="Degree" {{ $student->module === 'Degree' ? 'selected' : '' }}>Degree</option>
+          <option value="Diploma" {{ $module->level === 'Diploma' ? 'selected' : '' }}>Diploma</option>
+          <option value="Degree" {{ $module->level === 'Degree' ? 'selected' : '' }}>Degree</option>
 
         </select>
         @error('level')
@@ -49,8 +49,8 @@
         <label for="inputNanme4" class="form-label">Programe</label>
         <select class="form-control" name="programe">
           <option value="">Choose..</option>
-          <option value="IT" {{ $student->module === 'IT' ? 'selected' : '' }}>IT</option>
-          <option value="CSE" {{ $student->module === 'CSE' ? 'selected' : '' }}>CSE</option>
+          <option value="IT" {{ $module->programe === 'IT' ? 'selected' : '' }}>IT</option>
+          <option value="CSE" {{ $module->programe === 'CSE' ? 'selected' : '' }}>CSE</option>
         </select>
         @error('programe')
         <span class="error text-danger">{{ $message }}</span>
