@@ -16,7 +16,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6> 
+                      <h6>{{ $students }}</h6> 
                    </div>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6> 
+                      <h6>{{ $staffs }}</h6> 
                    </div>
                   </div>
                 </div>
@@ -50,7 +50,7 @@
                       <i class="bi bi-book"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6> 
+                      <h6>{{ $modules }}</h6> 
                    </div>
                   </div>
                 </div>
@@ -67,7 +67,7 @@
                       <i class="bi bi-diamond"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6> 
+                      <h6>0</h6> 
                    </div>
                   </div>
                 </div>
