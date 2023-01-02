@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string('l_name');
             $table->string('email');
             $table->string('contact');
+            $table->string('about')->nullable();
+            $table->string('address')->nullable();
+            $table->string('image')->nullable();
+            $table->string('link')->nullable();
+            $table->integer('is_admin')->default(0);
+            $table->string('password');
             $table->timestamps();
         });
     }

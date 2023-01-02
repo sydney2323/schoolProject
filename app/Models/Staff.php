@@ -3,10 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Staff extends Authenticatable
 {
-    use HasFactory;
-    protected $guarded = [];
+    use Notifiable;
+
+    protected $guard = 'staff';
+    // protected $guarded = [];
+
+    protected $fillable = [
+        'staff_id', 'f_name', 'l_name', 'email', 'contact', 'password', 'about','is_admin', 'address', 'link', 'image'
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
 }

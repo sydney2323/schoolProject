@@ -1,59 +1,50 @@
-@extends('layouts.admin')
+@extends('layouts.staff')
 
 @section('content')
 
-    <h1>Staff</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item active">Staff</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+<h1>Assigned Module</h1>
+<nav>
+  <ol class="breadcrumb">
+  </ol>
+</nav>
+</div><!-- End Page Title -->
 
+<div class="col-lg-12">
     <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-          <a class="btn btn-primary" href="/staff/create">Create</a>
-        </h5>
+        <div class="card-body">
 
-        <!-- Table with hoverable rows -->
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Staff ID</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Contact</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-           @foreach ($staffs as $staff)
-             <tr>
-              <td>{{ $staff->staff_id }}</td>
-              <td>{{ $staff->f_name }}</td>
-              <td>{{ $staff->l_name }}</td>
-              <td>{{ $staff->email }}</td>
-              <td>{{ $staff->contact }}</td>
-              <td>
-                 
-                  <form action="/staff/{{ $staff->id }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <a href="/staff/{{ $staff->id }}/edit" class="btn btn-sm btn-info text-white"><i class="bi bi-pencil-square"></i></a>
-                  <button type="submit" class="btn btn-danger  btn-sm"><i class="bi bi-trash"></i></button>
-                </form>
-              </td>
-             </tr>  
-           @endforeach
-          </tbody>
-        </table>
-        <!-- End Table with hoverable rows -->
+          <!-- Table with stripped rows -->
+          <table class="table table-striped datatable">
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Name</th>
+                <th scope="col">Level</th>
+                <th scope="col">Programe</th>
+                {{-- <th scope="col">Students</th>
+                <th scope="col">Action</th> --}}
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($assigned_modules as $assigned_module)
+              <tr>
+                <th scope="row">{{$assigned_module->code}}</th>
+                <td>{{$assigned_module->name}}</td>
+                <td>{{$assigned_module->level}}</td>
+                <td>{{$assigned_module->programe}}</td>
+                {{-- <td>25</td>
+                <td>
+                    <button type="submit" class="btn btn-info text-white btn-sm">Download Student list</button>
+                </td> --}}
+              </tr>
+              @endforeach
+              
+            </tbody>
+          </table>
+          <!-- End Table with stripped rows -->
 
+        </div>
       </div>
-    </div>
-
-
+</div>
+    
 @endsection

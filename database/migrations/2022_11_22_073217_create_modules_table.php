@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('level');
             $table->string('programe');
+            $table->string('assigned_staff')->nullable();;
+            $table->string('credit');
             $table->timestamps();
         });
     }

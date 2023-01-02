@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Staff;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Gate::define('is_admin', function(Staff $staff){
+            return $staff->is_admin = 1;
+        });
         Schema::defaultStringLength(191);
     }
 }

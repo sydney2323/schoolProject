@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'code', 'name', 'level', 'programe', 'credit', 'assigned_staff'
+    ];
+
 
 }
