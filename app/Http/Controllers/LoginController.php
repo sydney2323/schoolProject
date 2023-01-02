@@ -45,6 +45,9 @@ class LoginController extends Controller
             if (Auth::guard('staff')->user()->is_admin == 1) {
                 $request->session()->regenerate();
                 return redirect('/login-as-admin-or-staff');
+            }elseif (Auth::guard('staff')->user()->is_admin == 3) {
+                $request->session()->regenerate();
+                return redirect('/admin');
             }
 
             $request->session()->regenerate();
@@ -56,13 +59,32 @@ class LoginController extends Controller
 
     public function staffOut( Request $request )
     {
-        // if(Auth::guard('student')->check()){
-        //     Auth::guard('student')->logout();
-        //     return redirect()->route('home');
-        // }elseif (Auth::guard('staff')->check()) {
-        //     Auth::guard('staff')->logout();
-        //     return redirect()->route('home');
-        // }
+        if(Auth::guard('student')->check()){
+            Auth::guard('student')->logout();
+            return redirect()->route('home');
+        }elseif (Auth::guard('staff')->check()) {
+            Auth::guard('staff')->logout();
+            return redirect()->route('home');
+        }
+
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect()->intended('/');
+
+        // Session::flush();
+        
+        // Auth::logout();
+    }
+
+    public function adminOut( Request $request )
+    {
+        if(Auth::guard('student')->check()){
+            Auth::guard('student')->logout();
+            return redirect()->route('home');
+        }elseif (Auth::guard('staff')->check()) {
+            Auth::guard('staff')->logout();
+            return redirect()->route('home');
+        }
 
         Auth::logout();
         $request->session()->invalidate();

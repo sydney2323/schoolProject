@@ -32,7 +32,6 @@ Route::get('/student/login/form',[LoginController::class,'showStudentLoginForm']
 
 Route::post('/admin/login',[LoginController::class,'adminLogin']);
 Route::post('/staff/login',[LoginController::class,'staffLogin']);
-Route::get('/staff/logout',[LoginController::class,'staffOut']);
 Route::post('/student/login',[LoginController::class,'studentLogin']);
 
 Route::get('/',[MainController::class,'home'])->name('home');
@@ -41,6 +40,9 @@ Route::get('/student',[MainController::class,'student'])->middleware('auth:stude
 
 //staff
 Route::group(['middleware' => ['auth:staff']], function() {
+
+    Route::get('/staff/logout',[LoginController::class,'staffOut']);
+    Route::get('/admin/logout',[LoginController::class,'adminOut']);
 
     Route::get('/staff',[MainController::class,'staff']);
     Route::get('/staff/profile',[ProfileController::class,'staffProfile']);

@@ -187,7 +187,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed text-danger" href="#">
+        <a class="nav-link collapsed text-danger" data-bs-toggle="modal" data-bs-target="#basicModal" href="#">
           <i class="bi bi-box-arrow-in-left text-danger"></i>
           <span>Logout</span>
         </a>
@@ -195,6 +195,19 @@
     </ul>
 
   </aside><!-- End Sidebar-->
+
+      <!-- Basic Modal -->
+      <div class="modal fade" id="basicModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Are you sure you want to end your session?</p>
+              <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="/admin/logout" class="btn btn-sm btn-danger">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Basic Modal-->
 
   <main id="main" class="main">
 
