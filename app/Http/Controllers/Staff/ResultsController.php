@@ -93,7 +93,7 @@ class ResultsController extends Controller
             return back()->with('warning','Accademic year is not Active or not Created');
         }
 
-        $result["staff_id"] =  2323;
+        $result["staff_id"] =  Auth::guard('staff')->user()->id;
         // $result["staff_id"] =  Auth::guard('staff')->user()->staff_id;
         $result["academic_year"] =  $activeStatusAcademicYear->academic_year;
 
