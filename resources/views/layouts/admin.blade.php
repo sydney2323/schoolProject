@@ -187,7 +187,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed text-danger" data-bs-toggle="modal" data-bs-target="#basicModal" href="#">
+        <a class="nav-link collapsed text-danger" data-bs-toggle="modal" data-bs-target="#basicModal12" href="#">
           <i class="bi bi-box-arrow-in-left text-danger"></i>
           <span>Logout</span>
         </a>
@@ -197,7 +197,7 @@
   </aside><!-- End Sidebar-->
 
       <!-- Basic Modal -->
-      <div class="modal fade" id="basicModal" tabindex="-1">
+      <div class="modal fade" id="basicModal12" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
