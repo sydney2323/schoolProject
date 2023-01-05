@@ -54,6 +54,7 @@ class ResultsController extends Controller
     }
 
     public function index(){
+        $staff_id = Auth::guard('staff')->user()->id; 
         
         $modules = Module::where('assigned_staff', '=', $staff_id)->get();
         $results = Result::where('staff_id', '=', $staff_id)->get();
