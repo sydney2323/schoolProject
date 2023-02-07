@@ -24,6 +24,7 @@
       <div class="accordion-body">
 
         <form action="/staff/online-class" method="POST">
+        @csrf
           <div class="col-12">
             <label for="inputNanme4" class="form-label">Module Name</label>
             <select class="form-control" id="programe" name="module_id">
