@@ -27,13 +27,13 @@
         @csrf
           <div class="col-12">
             <label for="inputNanme4" class="form-label">Module Name</label>
-            <select class="form-control" id="programe" name="module_id">
+            <select class="form-control" id="programe" name="module">
               <option value="">-- Choose --</option>
               @foreach ($modules as $module)
                 <option value="{{ $module->id }}">{{ $module->code }} - {{ $module->name }}</option>
               @endforeach
             </select>
-            @error('module_id')
+            @error('module')
             <span class="error text-danger">{{ $message }}</span>
             @enderror
           </div>
