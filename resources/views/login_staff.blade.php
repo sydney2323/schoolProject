@@ -13,11 +13,11 @@
           
           </div><!-- End Logo -->
          
-          <div class="card mb-3">
+          <div class="card mb-5">
            
             <div class="card-body">
 
-              <div class="pt-4 pb-2">
+              <div class="pt-4 pb-4">
                 <h5 class="card-title text-center text-dark pb-0 fs-4">Login to Staff Account</h5>
               </div>
               @if ($message = Session::get('warning'))

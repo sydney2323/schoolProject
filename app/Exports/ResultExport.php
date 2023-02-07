@@ -7,7 +7,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromQuery;
 
-class ResultExport implements FromCollection, WithHeadings, FromQuery
+class ResultExport implements FromCollection, WithHeadings,FromQuery
 {
     /**
     * @return \Illuminate\Support\Collection

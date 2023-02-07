@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->integer('staff_id');
+            $table->integer('staff_id')->unique();
             $table->string('f_name');
             $table->string('l_name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('contact');
             $table->string('about')->nullable();
             $table->string('address')->nullable();

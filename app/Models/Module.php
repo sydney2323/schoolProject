@@ -9,7 +9,7 @@ class Module extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'code', 'name', 'level', 'programe', 'credit', 'assigned_staff'
+        'code', 'name', 'level','semester', 'programe', 'credit', 'assigned_staff'
     ];
 
 

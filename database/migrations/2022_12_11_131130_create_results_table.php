@@ -19,11 +19,13 @@ return new class extends Migration
             $table->string('reg_no');
             $table->string('staff_id');
             $table->string('module_id');
-            $table->string('cat_1');
-            $table->string('cat_2');
-            $table->string('assignment_1');
-            $table->string('assignment_2');
-            $table->string('final_exam')->nullable();
+            $table->string('cat_1')->default(0);;
+            $table->string('cat_2')->default(0);;
+            $table->string('assignment_1')->default(0);;
+            $table->string('assignment_2')->default(0);;
+            $table->string('final_exam')->default(0);
+            $table->string('score')->default(0);
+            $table->string('grade')->nullable();
             $table->timestamps();
         });
     }

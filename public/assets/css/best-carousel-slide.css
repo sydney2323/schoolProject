@@ -9,18 +9,15 @@ div.jumbotron.carousel-hero {
 }
 
 div.jumbotron.hero-nature {
-  background-image: url('../../assets/img/slide1.jpg');
-  filter: brightness(50%);
+  background-image: url('../img/architect-at-the-construction.jpg');
 }
 
 div.jumbotron.hero-photography {
-  background-image: url('../../assets/img/slide2.jpg');
-  filter: brightness(50%);
+  background-image: url('../img/architects-and-worker.jpg');
 }
 
 div.jumbotron.hero-technology {
-  background-image: url('../../assets/img/slide3.jpg');
-  filter: brightness(50%);
+  background-image: url('../img/young-college-students.jpg');
 }
 
 h1.hero-title, h2.hero-title, h3.hero-title {
@@ -35,24 +32,12 @@ p.hero-subtitle {
   color: #fff;
 }
 
-h1.hero-title2, h2.hero-title2, h3.hero-title2 {
-  text-shadow: 0 3px 3px rgba(0,0,0,0.4);
-  color: rgb(0, 0, 0);
-}
-
-p.hero-subtitle2 {
-  max-width: 600px;
-  margin: 25px auto;
-  padding: 10px 15px;
-  color: rgb(0, 0, 0);
-}
-
 .plat {
   border-radius: 0px;
 }
 
 .btn-primary.focus, .btn-primary:focus {
-  box-shadow: 0 0 0 0 #56c6c6!important;
+  box-shadow: 0 0 0 0 #048f83!important;
 }
 
 .btn-primary:hover {
@@ -62,8 +47,8 @@ p.hero-subtitle2 {
 }
 
 .btn.btn-primary {
-  background-color: #56c6c6!important;
-  border-color: #56c6c6!important;
+  background-color: #048f83!important;
+  border-color: #048f83!important;
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -81,5 +66,51 @@ p.hero-subtitle2 {
 span {
   font-style: inherit;
   font-weight: inherit;
+}
+
+#jj {
+  background-color: #ffffff;
+}
+
+#jj {
+  text-decoration-color: rgb(10,11,12);
+}
+
+#kk {
+  background-color: #56c6c6;
+}
+
+#ii {
+  border-image-width: 25px;
+}
+
+#ff {
+}
+
+#cn {
+  padding-right: 800px;
+  /*resize: 78px;*/
+  /*box-sizing: 45px;*/
+  /*nav-left: inherit;*/
+  /*nav-right: 100px;*/
+}
+
+#nl {
+  padding-right: 78px;
+}
+
+#si {
+}
+
+#fi {
+  padding-left: 400px;
+}
+
+#hm {
+  /*text-decoration-color: #0a0b0c;*/
+}
+
+#bb {
+  background-color: rgb(86,198,198);
 }
 

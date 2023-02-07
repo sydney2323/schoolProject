@@ -21,6 +21,13 @@ class AdminResultsController extends Controller
         return view('admin.results.index',compact('results','modules'));
     }
 
+    public function destroy($id)
+    {
+        $module = Result::findOrFail($id);
+        $module->delete();
+        return redirect('/admin/result');
+    }
+
     public function fetchRegNo(Request $request)
     {
         $data['reg_no'] = Student::where("level", $request->level)->where("programe", $request->programe)
@@ -56,12 +63,12 @@ class AdminResultsController extends Controller
     {
         $validate = request()->validate([
             'module_id' => 'required',
-            'file' => 'required'
+            'file' => 'required|mimes:xlsx'
         ]);
 
         // $path = $request->file('mcafile')->getRealPath();
         // Excel::import(new AdminResultCustomizeImport,$path);
-        Excel::import(new AdminResultCustomizeImport($request->module_id),$request->file('file'));
+        Excel::import(new AdminResultCustomizeImport($request->module_id,$request->level,$request->programe),$request->file('file'));
                
         return back()->with('success','Exams uploaded Successfull.');
     }

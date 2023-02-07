@@ -13,6 +13,14 @@
 
 <div class="card pt-4">
     <div class="card-body">
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+           @endforeach
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
       <div id="message"></div>
       @if ($message = Session::get('success'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -22,9 +30,9 @@
       </div>
       @endif
       <h5 class="card-title">
-        <a class="btn btn-secondary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal" href="#">Multiple Upload</a>
-        <a class="btn btn-secondary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal2" href="#">Customize Excel Template</a>
-        <a class="btn btn-success text-white btn-sm" href="#">Publish</a>
+        <a class="btn btn-secondary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal" href="#">Upload Final Exam</a>
+        {{-- <a class="btn btn-secondary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal2" href="#">Customize Excel Template</a> --}}
+        {{-- <a class="btn btn-success text-white btn-sm" href="#">Publish Result</a> --}}
       </h5>
 
      
@@ -36,11 +44,13 @@
             <th scope="col">Academic Year</th>
             <th scope="col">Reg No</th>
             <th scope="col">Module Code</th>
-            <th scope="col">Assignment 1</th>
-            <th scope="col">Assignment 2</th>
+            <th scope="col">Ass 1</th>
+            <th scope="col">Ass 2</th>
             <th scope="col">Cat 1</th>
             <th scope="col">Cat 2</th>
-            <th scope="col">Final Exam</th>
+            <th scope="col">Final</th>
+            <th scope="col">Score</th>
+            <th scope="col">Grade</th>
             <th scope="col">Action</th>
            
           </tr>
@@ -57,19 +67,22 @@
             <td>{{ $result->cat_1 }}</td>
             <td>{{ $result->cat_2 }}</td>
             <td class="display{{ $result->id }}">
-              @if ($result->final_exam == null)
+              {{ $result->final_exam }}
+              {{-- @if ($result->final_exam == null)
               <input type="text" id="examInput{{ $result->id }}" value="{{$result->final_exam}}" data-id="{{ $result->id }}"  class="check col-6">
               @else
               {{$result->final_exam}}
-              @endif
+              @endif --}}
              
             </td>
+            <td>{{ $result->score }}</td>
+            <td>{{ $result->grade }}</td>
             <td>
                
                 <form action="/admin/result/{{ $result->id }}" method="post">
                   @method('DELETE')
                   @csrf
-                  <a href="/admin/result/{{ $result->id }}/edit" class="btn btn-sm btn-info text-white"><i class="bi bi-pencil-square"></i></a>
+                  {{-- <a href="/admin/result/{{ $result->id }}/edit" class="btn btn-sm btn-info text-white"><i class="bi bi-pencil-square"></i></a> --}}
                 <button type="submit" class="btn btn-danger  btn-sm"><i class="bi bi-trash"></i></button>
               </form>
             </td>

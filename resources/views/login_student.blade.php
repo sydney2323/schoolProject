@@ -13,12 +13,12 @@
           
           </div><!-- End Logo -->
          
-          <div class="card mb-3">
+          <div class="card mb-5">
            
             <div class="card-body">
 
-              <div class="pt-4 pb-2">
-                <h5 class="card-title text-center pb-0 fs-4">Login to Student Account</h5>
+              <div class="pt-4 pb-4">
+                <h5 class="card-title text-center text-dark pb-0 fs-4">Login to Student Account</h5>
               </div>
               @if ($message = Session::get('warning'))
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -27,7 +27,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
               @endif
-              <form action="/student/login/form" method="POST" class="row g-3">
+              <form action="/student/login" method="POST" class="row g-3">
                  @csrf
                 <div class="col-12">
                   <label for="yourreg_no" class="form-label">Reg No</label>

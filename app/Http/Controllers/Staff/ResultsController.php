@@ -43,7 +43,7 @@ class ResultsController extends Controller
     {
         $validate = request()->validate([
             'module_id' => 'required',
-            'file' => 'required'
+            'file' => 'required|mimes:xlsx'
         ]);
 
         // $path = $request->file('mcafile')->getRealPath();

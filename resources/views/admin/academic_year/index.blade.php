@@ -27,7 +27,7 @@
             </tr>
           </thead>
           <tbody>
-          
+            
            @foreach ($academicYears as $academicYear)
              <tr>
               <td>{{ $academicYear->academic_year }}</td>
@@ -37,6 +37,19 @@
                 @else
                  <span class="badge bg-secondary">Not active</span>
                 @endif
+              </td>
+              <td>
+
+                <div class="btn-group">
+                  <button type="button" class="btn-sm btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Publish
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Semester One <i class="bi bi-check-square-fill ml-2 text-success"></i></a></li>
+                    <li><a class="dropdown-item" href="#">Semester Two <i class="bi bi-dash-square-fill text-secondary"></i> </a></li>
+                  </ul>
+                </div>
+
               </td>
               <td>
                  

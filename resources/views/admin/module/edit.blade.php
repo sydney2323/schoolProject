@@ -64,6 +64,22 @@
       @enderror
       </div>
 
+      <div class="col-12">
+        <label for="inputNanme4" class="form-label">Semester</label>
+        <select class="form-control" name="semester">
+          <option value="">Choose..</option>
+          <option value="I" {{ $module->semester === 'I' ? 'selected' : '' }}>I</option>
+          <option value="II" {{ $module->semester === 'II' ? 'selected' : '' }}>II</option>
+          <option value="III" {{ $module->semester === 'III' ? 'selected' : '' }}>III</option>
+          <option value="IV" {{ $module->semester === 'IV' ? 'selected' : '' }}>IV</option>
+          <option value="V" {{ $module->semester === 'V' ? 'selected' : '' }}>V</option>
+          <option value="VI" {{ $module->semester === 'VI' ? 'selected' : '' }}>VI</option>
+        </select>
+        @error('semester')
+        <span class="error text-danger">{{ $message }}</span>
+      @enderror
+      </div>
+
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Save</button>
         {{-- <button type="reset" class="btn btn-secondary">Reset</button> --}}

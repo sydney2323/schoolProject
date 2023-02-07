@@ -18,7 +18,7 @@ use Auth;
 
 class ResultImport implements  ToCollection, WithHeadingRow
 {
-    public function __construct(int $module_id)
+    public function __construct($module_id)
     {
         $this->module_id = $module_id;
     }
@@ -26,13 +26,27 @@ class ResultImport implements  ToCollection, WithHeadingRow
    
     public function collection(Collection $rows)
     {
+        // Validator::make($rows->toArray(), [
+        //     '*.reg_no' => 'required',
+        //     '*.assignment_1' => 'required|integer|max:10',
+        //     '*.assignment_2' => 'required|integer|max:10',
+        //     '*.cat_1' => 'required|integer|max:50',
+        //     '*.cat_2' => 'required|integer|max:50',
+        // ])->validate();
+        
         $checkActiveAcademicYear = AcademicYear::where('status', '=', 1)->first();
         if ($checkActiveAcademicYear) {
             foreach ($rows as $row) 
             {  
                 $student = Student::where('reg_no', $row['reg_no'])->first();
                 if ($student) {
-                    Result::create([
+                    Result::updateOrCreate(
+                        [
+                            'academic_year' => $checkActiveAcademicYear->academic_year,
+                            'reg_no'         => $row['reg_no'], 
+                            'module_id'      => $this->module_id, 
+                        ],
+                        [
                         'academic_year' => $checkActiveAcademicYear->academic_year,
                         'reg_no'         => $row['reg_no'], 
                         'staff_id'       => Auth::guard('staff')->user()->id,

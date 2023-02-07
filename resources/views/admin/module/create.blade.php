@@ -62,6 +62,22 @@
       @enderror
       </div>
 
+      <div class="col-12">
+        <label for="inputNanme4" class="form-label">Semester</label>
+        <select class="form-control" name="semester">
+          <option value="">Choose..</option>
+          <option value="I">I</option>
+          <option value="II">II</option>
+          <option value="III">III</option>
+          <option value="IV">IV</option>
+          <option value="V">V</option>
+          <option value="VI">VI</option>
+        </select>
+        @error('semester')
+        <span class="error text-danger">{{ $message }}</span>
+      @enderror
+      </div>
+
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Save</button>
         {{-- <button type="reset" class="btn btn-secondary">Reset</button> --}}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Module;
 use App\Models\Student;
 use App\Models\Staff;
+use App\Models\Result;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class MainController extends Controller
     }
 
     public function student(){
-        return view('student.index');
-    }
+        $results = Result::where('reg_no', '=', Auth::guard('student')->user()->reg_no)->get();
+        return view('student.index',compact('results'));
+        }
 
 }

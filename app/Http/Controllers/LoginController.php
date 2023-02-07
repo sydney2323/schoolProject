@@ -20,21 +20,12 @@ class LoginController extends Controller
         return view('login_staff');
     }
 
-
-    public function checkLoggedInUser(Request $request)
-    {
-        if(Auth::guard('staff')->check()){
-            Auth::logout();
-            $request->session()->invalidate();
-            $this->staffLogin();
-        }        
+    public function showStudentLoginForm(){
+        return view('login_student');
     }
 
     public function staffLogin( Request $request )
     {
-        // Auth::logout();
-        // Auth::guard('staff')->logout();
-
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required'
@@ -53,46 +44,45 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/staff');
         }
-        // return back()->withInput($request->only('email', 'remember'));
         return back()->with('warning','The provided credentials do not match our records.')->onlyInput('email');
+    }
+
+    public function studentLogin(Request $request )
+    {
+        $this->validate($request, [
+            'reg_no'   => 'required',
+            'password' => 'required'
+        ]);
+       
+        if (Auth::guard('student')->attempt(['reg_no' => $request->reg_no, 'password' => $request->password])) {
+            $request->session()->regenerate();
+            return redirect()->intended('/student');
+        }
+        return back()->with('warning','The provided credentials do not match our records.')->onlyInput('reg_no');
     }
 
     public function staffOut( Request $request )
     {
-        if(Auth::guard('student')->check()){
-            Auth::guard('student')->logout();
-            return redirect()->route('home');
-        }elseif (Auth::guard('staff')->check()) {
-            Auth::guard('staff')->logout();
-            return redirect()->route('home');
-        }
-
         Auth::logout();
         $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->intended('/');
-
-        // Session::flush();
-        
-        // Auth::logout();
     }
 
     public function adminOut( Request $request )
     {
-        if(Auth::guard('student')->check()){
-            Auth::guard('student')->logout();
-            return redirect()->route('home');
-        }elseif (Auth::guard('staff')->check()) {
-            Auth::guard('staff')->logout();
-            return redirect()->route('home');
-        }
-
         Auth::logout();
         $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->intended('/');
+    }
 
-        // Session::flush();
-        
-        // Auth::logout();
+    public function studentOut( Request $request )
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->intended('/');
     }
 
     public function loginAsAdminOrStaff(){

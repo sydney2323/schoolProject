@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('academic_year');
             $table->boolean('status')->default(false);
+            $table->boolean('is_published')->default(false);
+            $table->boolean('semester_1')->default(false);
+            $table->boolean('semester_2')->default(false);
             $table->timestamps();
         });
     }

@@ -13,6 +13,15 @@
 
 <div class="card pt-4">
     <div class="card-body">
+      @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+           @endforeach
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+     
       @if ($message = Session::get('success'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <i class="bi-check-circle me-1"></i>
@@ -21,9 +30,9 @@
       </div>
       @endif
       <h5 class="card-title">
-        <a class="btn btn-secondary btn-sm" href="/staff/result/create">Single Upload</a>
-        <a class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal" href="#">Multiple Upload</a>
-        <a class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal2" href="#">Customize Upload Excel</a>
+        {{-- <a class="btn btn-secondary btn-sm" href="/staff/result/create">Single Upload</a> --}}
+        <a class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal" href="#">Upload</a>
+        {{-- <a class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#smallModal2" href="#">Customize Upload Excel</a> --}}
      
       </h5>
 
@@ -103,7 +112,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-sm btn-info">Upload</button>
+              <button type="submit" class="btn btn-sm btn-info text-white">Upload</button>
             </div>
           </form> 
         </div>
@@ -111,7 +120,7 @@
     </div>
   </div><!-- End Results-->
 
-  <div class="modal fade" id="smallModal2" tabindex="-1">
+  {{-- <div class="modal fade" id="smallModal2" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -152,6 +161,6 @@
       </form>
       </div>
     </div>
-  </div><!-- End Results-->
+  </div><!-- End Results--> --}}
 
 @endsection

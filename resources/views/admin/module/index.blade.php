@@ -34,6 +34,7 @@
               <th scope="col">Credit</th>
               <th scope="col">Level</th>
               <th scope="col">Programe</th>
+              <th scope="col">Semester</th>
               <th scope="col">Assign</th>
               <th scope="col">Action</th>
             </tr>
@@ -46,6 +47,7 @@
               <td>{{ $module->credit }}</td>
               <td>{{ $module->level }}</td>
               <td>{{ $module->programe }}</td>
+              <td>{{ $module->semester }}</td>
               <td>
                 @php
                     if($module->assigned_staff == null){

@@ -19,7 +19,7 @@ class StudentController extends Controller
 
     public function store(Request $request){
         $student = request()->validate([
-            'reg_no' => 'required',
+            'reg_no' => 'required|unique:students',
             'f_name' => 'required',
             'l_name' => 'required',
             'email' => 'required',

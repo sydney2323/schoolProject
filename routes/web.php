@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AcademicYearController;
@@ -8,7 +9,9 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Staff\ResultsController;
 use App\Http\Controllers\Staff\ProfileController;
+use App\Http\Controllers\Student\StudentProfileController;
 use App\Http\Controllers\Admin\AdminResultsController;
+use App\Http\Controllers\Admin\SemesterGPA;
 use Illuminate\Support\Facades\Route;
 use App\Models\Crud;
 
@@ -36,7 +39,6 @@ Route::post('/student/login',[LoginController::class,'studentLogin']);
 
 Route::get('/',[MainController::class,'home'])->name('home');
 // Route::get('/admin',[MainController::class,'index2'])->middleware('auth:admin');;
-Route::get('/student',[MainController::class,'student'])->middleware('auth:student');;
 
 //staff
 Route::group(['middleware' => ['auth:staff']], function() {
@@ -61,29 +63,80 @@ Route::group(['middleware' => ['auth:staff']], function() {
     Route::post('/staff/result/import',[ResultsController::class,'import']);
     Route::get('/staff/result/export',[ResultsController::class,'export']);
 
+    //zoom staff
+    Route::get('/staff/online-class',[MeetingController::class,'index']);
+    Route::post('/staff/online-class',[MeetingController::class,'store']);
+
+
     //Route that only staff with admin previlage can perform
     Route::group(['middleware' => ['can:is_admin']], function() {
       Route::get('/login-as-admin-or-staff',[LoginController::class,'loginAsAdminOrStaff']);
       Route::get('/admin',[MainController::class,'admin']);
       Route::get('/admin/result',[AdminResultsController::class,'index']);
       Route::get('/admin/result/create',[AdminResultsController::class,'create']);
+      Route::delete('/admin/result/{id}',[AdminResultsController::class,'destroy']);
+
       Route::post('/admin/result/import',[AdminResultsController::class,'import']);
       Route::post('/admin/result/export-customized-template',[AdminResultsController::class,'customizedTemp']);
+
 
       Route::post('/admin/result/fetch-reg-and-module',[ResultsController::class,'fetchRegAndModule']);
       Route::put('/admin/result/store-final-exam',[AdminResultsController::class,'storeFinalExam']);
 
-      Route::resource('/admin/student', StudentController::class);
-      Route::resource('/admin/academic-year', AcademicYearController::class);
-      Route::resource('/admin/staff', StaffController::class);
-      Route::resource('/admin/module', ModuleController::class);
+      Route::get('/admin/student',[StudentController::class,'index']);
+      Route::get('/admin/student/create',[StudentController::class,'create']);
+      Route::post('/admin/student',[StudentController::class,'store']);
+      Route::get('/admin/student/{id}/edit',[StudentController::class,'edit']);
+      Route::put('/admin/student/{id}',[StudentController::class,'update']);
+      Route::delete('/admin/student/{id}',[StudentController::class,'destroy']);
+
+      Route::get('/admin/staff',[StaffController::class,'index']);
+      Route::get('/admin/staff/create',[StaffController::class,'create']);
+      Route::post('/admin/staff',[StaffController::class,'store']);
+      Route::get('/admin/staff/{id}/edit',[StaffController::class,'edit']);
+      Route::put('/admin/staff/{id}',[StaffController::class,'update']);
+      Route::delete('/admin/staff/{id}',[StaffController::class,'destroy']);
+
+      // Route::resource('/admin/student', StudentController::class);
+      // Route::resource('/admin/academic-year', AcademicYearController::class);
+      // Route::resource('/admin/staff', StaffController::class);
+
+      Route::get('/admin/module',[ModuleController::class,'index']);
+      Route::get('/admin/module/create',[ModuleController::class,'create']);
+      Route::post('/admin/module',[ModuleController::class,'store']);
+      Route::get('/admin/module/{id}/edit',[ModuleController::class,'edit']);
+      Route::put('/admin/module/{id}',[ModuleController::class,'update']);
+      Route::delete('/admin/module/{id}',[ModuleController::class,'destroy']);
+      // Route::resource('/admin/module', ModuleController::class);
       Route::post('/admin/module-assign',[ModuleController::class,'assign']);
 
       Route::get('/admin/privilege',[StaffController::class,'privilege']);
       Route::put('/admin/privilege-assign',[StaffController::class,'privilegeAssign']);
 
+      Route::get('/admin/academic-year',[AcademicYearController::class,'index']);
+      Route::get('/admin/academic-year/create',[AcademicYearController::class,'create']);
+      Route::post('/admin/academic-year',[AcademicYearController::class,'store']);
+      Route::get('/admin/academic-year/{id}/edit',[AcademicYearController::class,'edit']);
+      Route::put('/admin/academic-year/{id}',[AcademicYearController::class,'update']);
+      Route::delete('/admin/academic-year/{id}',[AcademicYearController::class,'destroy']);
+
+      Route::get('/admin/semester-GPA-one/{academic_year}',[SemesterGPA::class,'createSemester_1']);
+      Route::put('/admin/semester-GPA-two/{academic_year}',[SemesterGPA::class,'createSemester_2']);
+
     });
   });
+
+  //Student
+Route::group(['middleware' => ['auth:student']], function() {
+
+  Route::get('/student/logout',[LoginController::class,'studentOut']);
+  Route::get('/student/profile',[StudentProfileController::class,'profile']);
+
+  Route::get('/student',[MainController::class,'student']);
+
+  Route::get('/student/online-class',[MeetingController::class,'index_student']);
+
+});
 
 
 //admin

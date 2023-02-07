@@ -25,6 +25,7 @@ class ModuleController extends Controller
             'name' => 'required',
             'credit' => 'required',
             'level' => 'required',
+            'semester' => 'required',
             'programe' => 'required'
         ]));
 
@@ -45,6 +46,7 @@ class ModuleController extends Controller
             'name' => 'required',
             'credit' => 'required',
             'level' => 'required',
+            'semester' => 'required',
             'programe' => 'required'
         ]));
 

@@ -21,10 +21,10 @@ class StaffController extends Controller
 
     public function store(Request $request){
         $staff = request()->validate([
-            'staff_id' => 'required',
+            'staff_id' => 'required|unique:staff',
             'f_name' => 'required',
             'l_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:staff',
             'contact' => 'required'
         ]);
 

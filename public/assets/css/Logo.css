@@ -1,0 +1,9 @@
+#brand-logo {
+  background-image: url(/assets/img/logo.png?h=0a248f619657ccdba6553402d542c92b);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 70px;
+}
+
