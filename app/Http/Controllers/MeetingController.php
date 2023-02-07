@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ZoomClass;
+use App\Models\Module;
 use App\Traits\ZoomMeetingTrait;
 use Illuminate\Http\Request;
 use Auth;
