@@ -24,17 +24,17 @@
       <div class="accordion-body">
 
         <form action="/staff/online-class" method="POST">
-          @csrf
           <div class="col-12">
-            <label for="inputNanme4" class="form-label">Module</label>
-            <select class="form-control" name="module">
-              <option value="">Choose..</option>
-              <option value="Diploma">Diploma</option>
-              <option value="Degree">Degree</option>
+            <label for="inputNanme4" class="form-label">Module Name</label>
+            <select class="form-control" id="programe" name="module_id">
+              <option value="">-- Choose --</option>
+              @foreach ($modules as $module)
+                <option value="{{ $module->id }}">{{ $module->code }} - {{ $module->name }}</option>
+              @endforeach
             </select>
-            @error('module')
+            @error('module_id')
             <span class="error text-danger">{{ $message }}</span>
-          @enderror
+            @enderror
           </div>
 
           <div class="row">

@@ -18,8 +18,10 @@ class MeetingController extends Controller
 
     public function index()
     {
+        $staff_id =  Auth::guard('staff')->user()->id;
+        $modules = Module::where("assigned_staff", $staff_id)->get();
         $classes = ZoomClass::all();
-        return view('staff.online_class.index', compact('classes'));
+        return view('staff.online_class.index', compact('classes','modules'));
     }
 
     public function index_student()
